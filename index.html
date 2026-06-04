@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solarwake</title>
+  <link rel="stylesheet" href="src/styles.css">
+</head>
+<body>
+  <main class="page">
+    <section class="topbar">
+      <div>        
+        <p class="eyebrow">Mission control simulator</p>
+        <h1>Solarwake</h1>
+        <p class="intro">
+          A mission-control simulator that shows how live space weather can
+          affect spacecraft, satellites, and astronaut operations.
+        </p>
+      </div>
+
+      <label class="mission-picker">
+        <span>Mission</span>
+        <select>
+          <option>ISS EVA</option>
+          <option>Artemis Moon Transit</option>
+          <option>Mars Transfer</option>
+          <option>GPS Satellite</option>
+          <option>CubeSat</option>
+        </select>
+      </label>
+    <img class="mascot-peek" src="assets/mascot-peek.png" alt="">
+
+    </section>
+
+    <section class="dashboard">
+      <article class="panel risk-panel">
+        <p class="panel-label">Mission Risk</p>
+        <div class="risk-score">-- <span>/ 100</span></div>
+        <p class="muted">Waiting for space weather data...</p>
+      </article>
+
+      <article class="panel">
+        <p class="panel-label">Current Space Weather</p>
+        <dl class="data-list">
+          <div>
+            <dt>Kp</dt>
+            <dd>--</dd>
+          </div>
+          <div>
+            <dt>Bz</dt>
+            <dd>--</dd>
+          </div>
+          <div>
+            <dt>Alerts</dt>
+            <dd>--</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="panel">
+        <p class="panel-label">Mission Impacts</p>
+        <dl class="data-list">
+          <div>
+            <dt>Radiation</dt>
+            <dd>--</dd>
+          </div>
+          <div>
+            <dt>Communications</dt>
+            <dd>--</dd>
+          </div>
+          <div>
+            <dt>Power</dt>
+            <dd>--</dd>
+          </div>
+          <div>
+            <dt>Operations</dt>
+            <dd>--</dd>
+          </div>
+        </dl>
+      </article>
+
+      <article class="panel call-panel">
+        <p class="panel-label">Mission Control Call</p>
+        <h2>Choose a mission to begin.</h2>
+        <p class="muted">
+          Once live data is connected, this panel will explain whether the
+          mission should continue, delay, or move into a safer operating mode.
+        </p>
+        <img class="mascot-drift" src="assets/mascot-drift.png" alt="">
+
+      </article>
+    </section>
+  </main>
+
+  <script src="src/app.js"></script>
+</body>
+</html>
