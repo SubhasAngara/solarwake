@@ -1,49 +1,49 @@
 const missions = {
-    "ISS EVA": {
-        risk: 62,
-        radiation: "High",
-        communications: "Medium",
-        power: "Low",
-        operations: "Delay EVA if storm risk rises",
-        title: "Proceed with crew safety checks.",
-        body: "ISS spacewalks are sensitive to radiation and communications risk, so mission control should monitor conditions closely.",
-    },
-    "Artemis Moon Transit": {
-        risk: 54,
-        radiation: "Medium",
-        communications: "Medium",
-        power: "Low",
-        operations: "Continue with monitoring",
-        title: "Continue with extra monitoring.",
-        body: "A lunar transit has more exposure than low Earth orbit, but the mission can continue if conditions stay stable.",
-    },
-    "Mars Transfer": {
-        risk: 68,
-        radiation: "High",
-        communications: "Medium",
-        power: "Medium",
-        operations: "Reduce nonessential activity",
-        title: "Limit exposed operations.",
-        body: "Deep-space travel has longer exposure times, so storm activity can create higher risk for crew and onboard systems.",
-    },
-    "GPS Satellite": {
-        risk: 47,
-        radiation: "Low",
-        communications: "High",
-        power: "Medium",
-        operations: "Watch signal reliability",
-        title: "Monitor navigation signal risk.",
-        body: "GPS satellites are uncrewed, but space weather can affect signal accuracy and communication reliability.",
-    },
-    CubeSat: {
-        risk: 58,
-        radiation: "Medium",
-        communications: "Medium",
-        power: "High",
-        operations: "Prepare safe mode",
-        title: "Prepare for safe mode if needed.",
-        body: "Small satellites have limited shielding and power margin, so even moderate storms can matter.",
-    },
+  "ISS EVA": {
+    risk: 62,
+    radiation: "High",
+    communications: "Medium",
+    power: "Low",
+    operations: "Delay EVA if storm risk rises",
+    title: "Proceed with crew safety checks.",
+    body: "ISS spacewalks are sensitive to radiation and communications risk, so mission control should monitor conditions closely.",
+  },
+  "Artemis Moon Transit": {
+    risk: 54,
+    radiation: "Medium",
+    communications: "Medium",
+    power: "Low",
+    operations: "Continue with monitoring",
+    title: "Continue with extra monitoring.",
+    body: "A lunar transit has more exposure than low Earth orbit, but the mission can continue if conditions stay stable.",
+  },
+  "Mars Transfer": {
+    risk: 68,
+    radiation: "High",
+    communications: "Medium",
+    power: "Medium",
+    operations: "Reduce nonessential activity",
+    title: "Limit exposed operations.",
+    body: "Deep-space travel has longer exposure times, so storm activity can create higher risk for crew and onboard systems.",
+  },
+  "GPS Satellite": {
+    risk: 47,
+    radiation: "Low",
+    communications: "High",
+    power: "Medium",
+    operations: "Watch signal reliability",
+    title: "Monitor navigation signal risk.",
+    body: "GPS satellites are uncrewed, but space weather can affect signal accuracy and communication reliability.",
+  },
+  CubeSat: {
+    risk: 58,
+    radiation: "Medium",
+    communications: "Medium",
+    power: "High",
+    operations: "Prepare safe mode",
+    title: "Prepare for safe mode if needed.",
+    body: "Small satellites have limited shielding and power margin, so even moderate storms can matter.",
+  },
 };
 
 const missionSelect = document.querySelector("#mission-select");
@@ -56,16 +56,16 @@ const callTitle = document.querySelector("#call-title");
 const callBody = document.querySelector("#call-body");
 
 function updateMission() {
-    const selectedMission = missionSelect.ariaValueMax;
-    const mission = missions[selectedMission];
+  const selectedMission = missionSelect.value;
+  const mission = missions[selectedMission];
 
-    riskScore.textContent = mission.risk;
-    radiationValue.textContent = mission.radiation;
-    communicationsValue.textContent = mission.communications;
-    powerValue.textContent = mission.power;
-    operationsValue.textContent = mission.operations;
-    callTitle.textContent = mission.title;
-    callBody.textContent = mission.body;
+  riskScore.textContent = mission.risk;
+  radiationValue.textContent = mission.radiation;
+  communicationsValue.textContent = mission.communications;
+  powerValue.textContent = mission.power;
+  operationsValue.textContent = mission.operations;
+  callTitle.textContent = mission.title;
+  callBody.textContent = mission.body;
 }
 
 missionSelect.addEventListener("change", updateMission);
