@@ -20,7 +20,7 @@
 
       <label class="mission-picker">
         <span>Mission</span>
-        <select>
+        <select id="mission-select">
           <option>ISS EVA</option>
           <option>Artemis Moon Transit</option>
           <option>Mars Transfer</option>
@@ -35,7 +35,7 @@
     <section class="dashboard">
       <article class="panel risk-panel">
         <p class="panel-label">Mission Risk</p>
-        <div class="risk-score">-- <span>/ 100</span></div>
+        <div class="risk-score"><span id="risk-score">--</span> <span>/ 100</span></div>
         <p class="muted">Waiting for space weather data...</p>
       </article>
 
@@ -62,19 +62,19 @@
         <dl class="data-list">
           <div>
             <dt>Radiation</dt>
-            <dd>--</dd>
+            <dd id="radiation-value">--</dd>
           </div>
           <div>
             <dt>Communications</dt>
-            <dd>--</dd>
+            <dd id="communications-value">--</dd>
           </div>
           <div>
             <dt>Power</dt>
-            <dd>--</dd>
+            <dd id="power-value">--</dd>
           </div>
           <div>
             <dt>Operations</dt>
-            <dd>--</dd>
+            <dd id="operations-value">--</dd>
           </div>
         </dl>
       </article>
@@ -82,7 +82,7 @@
       <article class="panel call-panel">
         <p class="panel-label">Mission Control Call</p>
         <h2>Choose a mission to begin.</h2>
-        <p class="muted">
+        <p class="muted" id="call-body">
           Once live data is connected, this panel will explain whether the
           mission should continue, delay, or move into a safer operating mode.
         </p>
