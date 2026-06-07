@@ -1,97 +1,118 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Solarwake</title>
-  <link rel="stylesheet" href="src/styles.css">
+  <link rel="stylesheet" href="./src/styles.css">
 </head>
+
 <body>
-  <main class="page">
-    <section class="topbar">
-      <div>        
-        <p class="eyebrow">Mission control simulator</p>
-        <h1>Solarwake</h1>
-        <p class="intro">
-          A mission-control simulator that shows how live space weather can
-          affect spacecraft, satellites, and astronaut operations.
-        </p>
+  <div class="space-scene" aria-hidden="true">
+    <div class="space-glow glow-one"></div>
+    <div class="space-glow glow-two"></div>
+    <div class="space-glow glow-three"></div>
+    <div class="star-layer stars-slow"></div>
+    <div class="star-layer stars-fast"></div>
+    <div class="dust-field"></div>
+    <img class="background-mascot mascot-drift" src="./assets/mascot-drift.png" alt="">
+  </div>
+
+  <main class="shell" id="app">
+    <section class="home-view view is-active" aria-labelledby="home-title">
+      <div class="home-panel">
+        <div class="brand-lockup">
+          <img class="brand-logo" src="./assets/solarwake-logo.png" alt="Solarwake" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
+          <h1 class="brand-word" id="home-title">Solarwake</h1>
+        </div>
+
+        <nav class="home-actions" aria-label="Main menu">
+          <button class="menu-button primary" type="button" id="playButton">Play mission</button>
+          <button class="menu-button" type="button" id="tutorialButton">Tutorial</button>
+          <button class="menu-button" type="button" id="aboutButton">About</button>
+        </nav>
+
+        <p class="info-note" id="infoNote" hidden></p>
       </div>
-
-      <label class="mission-picker">
-        <span>Mission</span>
-        <select id="mission-select">
-          <option>ISS EVA</option>
-          <option>Artemis Moon Transit</option>
-          <option>Mars Transfer</option>
-          <option>GPS Satellite</option>
-          <option>CubeSat</option>
-        </select>
-      </label>
-    <img class="mascot-peek" src="assets/mascot-peek.png" alt="">
-
     </section>
 
-    <section class="dashboard">
-      <article class="panel risk-panel">
-        <p class="panel-label">Mission Risk</p>
-        <div class="risk-score"><span id="risk-score">--</span> <span>/ 100</span></div>
-        <p class="muted">Waiting for space weather data...</p>
-      </article>
+    <section class="mission-view view" id="missionView" aria-labelledby="mission-title" hidden>
+      <div class="mission-shell">
+        <header class="mission-topbar">
+          <button class="back-button" type="button" id="backButton">Back</button>
+          <div>
+            <p class="eyebrow">Select mission</p>
+            <h2 id="mission-title">What do you want to control?</h2>
+          </div>
+        </header>
 
-      <article class="panel">
-        <p class="panel-label">Current Space Weather</p>
-        <dl class="data-list">
-          <div>
-            <dt>Kp</dt>
-            <dd>--</dd>
-          </div>
-          <div>
-            <dt>Bz</dt>
-            <dd>--</dd>
-          </div>
-          <div>
-            <dt>Alerts</dt>
-            <dd>--</dd>
-          </div>
-        </dl>
-      </article>
+        <div class="mission-layout">
+          <div class="mission-list" aria-label="Mission choices">
+            <button class="mission-card is-selected" type="button" data-mission="eva">
+              <span>EVA</span>
+              <strong>Astronaut EVA</strong>
+              <small>High radiation exposure during spacewalk operations.</small>
+            </button>
 
-      <article class="panel">
-        <p class="panel-label">Mission Impacts</p>
-        <dl class="data-list">
-          <div>
-            <dt>Radiation</dt>
-            <dd id="radiation-value">--</dd>
-          </div>
-          <div>
-            <dt>Communications</dt>
-            <dd id="communications-value">--</dd>
-          </div>
-          <div>
-            <dt>Power</dt>
-            <dd id="power-value">--</dd>
-          </div>
-          <div>
-            <dt>Operations</dt>
-            <dd id="operations-value">--</dd>
-          </div>
-        </dl>
-      </article>
+            <button class="mission-card" type="button" data-mission="iss">
+              <span>ISS</span>
+              <strong>ISS Orbit</strong>
+              <small>Protect crew systems and low Earth orbit communications.</small>
+            </button>
 
-      <article class="panel call-panel">
-        <p class="panel-label">Mission Control Call</p>
-        <h2>Choose a mission to begin.</h2>
-        <p class="muted" id="call-body">
-          Once live data is connected, this panel will explain whether the
-          mission should continue, delay, or move into a safer operating mode.
-        </p>
-        <img class="mascot-drift" src="assets/mascot-drift.png" alt="">
+            <button class="mission-card" type="button" data-mission="artemis">
+              <span>MOON</span>
+              <strong>Artemis Capsule</strong>
+              <small>Manage crew safety during a lunar transit window.</small>
+            </button>
 
-      </article>
+            <button class="mission-card" type="button" data-mission="mars">
+              <span>MARS</span>
+              <strong>Mars Transfer</strong>
+              <small>Balance long-duration exposure, power, and signal delay.</small>
+            </button>
+
+            <button class="mission-card" type="button" data-mission="gps">
+              <span>GPS</span>
+              <strong>GPS Satellite</strong>
+              <small>Watch signal reliability during geomagnetic storms.</small>
+            </button>
+
+            <button class="mission-card" type="button" data-mission="cubesat">
+              <span>CUBE</span>
+              <strong>CubeSat</strong>
+              <small>Keep a small satellite alive with limited shielding.</small>
+            </button>
+          </div>
+
+          <section class="viewer-panel" aria-label="Mission 3D preview">
+            <div class="viewer-copy">
+              <p class="eyebrow">Interactive preview</p>
+              <h3 id="viewerTitle">Astronaut EVA</h3>
+              <p id="viewerText">Drag the visual to inspect the mission from different angles.</p>
+            </div>
+
+            <div class="viewer-frame" id="viewerFrame">
+              <div class="orbit orbit-a"></div>
+              <div class="orbit orbit-b"></div>
+              <div class="mission-model model-eva" id="missionModel" aria-hidden="true">
+                <div class="model-shadow"></div>
+                <div class="model-part part-main"></div>
+                <div class="model-part part-top"></div>
+                <div class="model-part part-left"></div>
+                <div class="model-part part-right"></div>
+                <div class="model-part part-bottom"></div>
+              </div>
+              <p class="drag-hint">Drag to rotate</p>
+            </div>
+          </section>
+        </div>
+      </div>
     </section>
   </main>
 
-  <script src="src/app.js"></script>
+  <script type="module" src="./src/app.js"></script>
 </body>
+
 </html>

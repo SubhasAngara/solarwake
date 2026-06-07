@@ -44,16 +44,11 @@ const viewerText = document.querySelector("#viewerText");
 const missionModel = document.querySelector("#missionModel");
 const viewerFrame = document.querySelector("#viewerFrame");
 
-function resetScroll() {
-  window.scrollTo({ top: 0, left: 0 });
-}
-
 function showMissionView() {
   homeView.classList.remove("is-active");
   setTimeout(() => {
     homeView.hidden = true;
     missionView.hidden = false;
-    resetScroll();
     requestAnimationFrame(() => missionView.classList.add("is-active"));
   }, 220);
 }
@@ -63,7 +58,6 @@ function showHomeView() {
   setTimeout(() => {
     missionView.hidden = true;
     homeView.hidden = false;
-    resetScroll();
     requestAnimationFrame(() => homeView.classList.add("is-active"));
   }, 220);
 }

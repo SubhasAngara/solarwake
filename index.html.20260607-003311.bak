@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Solarwake</title>
+  <link rel="stylesheet" href="./src/styles.css">
+</head>
+
+<body>
+  <div class="space-scene">
+    <div class="star-layer stars-near"></div>
+    <div class="star-layer stars-far"></div>
+    <div class="nebula-field"></div>
+    <div class="solar-ribbon ribbon-one"></div>
+    <div class="solar-ribbon ribbon-two"></div>
+  </div>
+
+  <main class="play-screen">
+    <section class="play-panel">
+      <p class="eyebrow">Mission control simulator</p>
+      <h1>Solarwake</h1>
+      <p class="intro">
+        Simulate how live space weather affects astronauts, spacecraft,
+        satellites, and mission-control decisions.
+      </p>
+
+      <div class="play-actions">
+        <a class="primary-button" href="#missions">Play mission</a>
+        <a class="ghost-button" href="#about">How it works</a>
+      </div>
+
+      <div class="mini-status">
+        <span>Live NOAA data</span>
+        <span>Mission risk</span>
+        <span>Space-weather events</span>
+      </div>
+    </section>
+
+    <section class="mission-stage" aria-label="Mission preview">
+      <div class="glass-hud hud-top">
+        <span>Solar activity</span>
+        <strong>Nominal</strong>
+      </div>
+
+      <div class="orbital-ring ring-one"></div>
+      <div class="orbital-ring ring-two"></div>
+
+      <img class="mascot-float" src="./assets/mascot-drift.png" alt="Solarwake astronaut dog mascot">
+
+      <div class="spacecraft-card">
+        <span>Selected mission</span>
+        <strong>Choose a mission below</strong>
+      </div>
+    </section>
+
+    <section class="mission-picker" id="missions" aria-label="Choose a mission">
+      <input type="radio" name="mission" id="mission-eva" checked>
+      <input type="radio" name="mission" id="mission-iss">
+      <input type="radio" name="mission" id="mission-artemis">
+      <input type="radio" name="mission" id="mission-mars">
+      <input type="radio" name="mission" id="mission-gps">
+      <input type="radio" name="mission" id="mission-cubesat">
+
+      <div class="mission-heading">
+        <p class="eyebrow">Select mission</p>
+        <h2>What do you want to control?</h2>
+      </div>
+
+      <div class="mission-grid">
+        <label class="mission-card" for="mission-eva">
+          <span class="mission-icon">EVA</span>
+          <strong>Astronaut EVA</strong>
+          <small>High radiation exposure during spacewalk operations.</small>
+        </label>
+
+        <label class="mission-card" for="mission-iss">
+          <span class="mission-icon">ISS</span>
+          <strong>ISS Orbit</strong>
+          <small>Protect crew systems and low Earth orbit communications.</small>
+        </label>
+
+        <label class="mission-card" for="mission-artemis">
+          <span class="mission-icon">MOON</span>
+          <strong>Artemis Capsule</strong>
+          <small>Manage crew safety during a lunar transit window.</small>
+        </label>
+
+        <label class="mission-card" for="mission-mars">
+          <span class="mission-icon">MARS</span>
+          <strong>Mars Transfer</strong>
+          <small>Balance long-duration exposure, power, and signal delay.</small>
+        </label>
+
+        <label class="mission-card" for="mission-gps">
+          <span class="mission-icon">GPS</span>
+          <strong>GPS Satellite</strong>
+          <small>Watch signal reliability during geomagnetic storms.</small>
+        </label>
+
+        <label class="mission-card" for="mission-cubesat">
+          <span class="mission-icon">CUBE</span>
+          <strong>CubeSat</strong>
+          <small>Keep a small satellite alive with limited shielding.</small>
+        </label>
+      </div>
+    </section>
+  </main>
+</body>
+</html>

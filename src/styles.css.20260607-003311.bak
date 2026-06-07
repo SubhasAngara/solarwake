@@ -1,0 +1,519 @@
+:root {
+  --bg: #03070d;
+  --panel: rgba(9, 15, 24, 0.68);
+  --panel-strong: rgba(13, 22, 34, 0.86);
+  --line: rgba(185, 226, 255, 0.18);
+  --text: #f6fbff;
+  --muted: #b6c6d1;
+  --soft: #7f95a3;
+  --teal: #38f2d0;
+  --blue: #71b8ff;
+  --pink: #f272d2;
+  --gold: #ffd166;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.space-scene {
+  position: fixed;
+  inset: 0;
+  z-index: -5;
+  overflow: hidden;
+  background: fixed radial-gradient(circle at 62% 54%, rgba(255, 178, 78, 0.16), transparent 18rem),
+    radial-gradient(circle at 38% 38%, rgba(242, 114, 210, 0.18), transparent 24rem),
+    radial-gradient(circle at 74% 20%, rgba(113, 184, 255, 0.16), transparent 22rem),
+    linear-gradient(145deg, #02040a 0%, #06111f 46%, #03070d 100%);
+}
+
+.space-scene::before {
+  content: "";
+  position: absolute;
+  inset: -20%;
+  background: fixed radial-gradient(circle, rgba(255, 255, 255, 0.9) 0 1px, transparent 1.5px) 0 0 / 84px 84px,
+    radial-gradient(circle, rgba(116, 183, 255, 0.7) 0 1px, transparent 1.5px) 22px 48px / 132px 132px,
+    radial-gradient(circle, rgba(255, 212, 140, 0.8) 0 1px, transparent 1.5px) 54px 12px / 156px 156px;
+  opacity: 0.75;
+  animation: starDrift 70s linear infinite;
+}
+
+.star-layer {
+  position: absolute;
+  inset: -18%;
+  opacity: 0.65;
+  background: fixed radial-gradient(circle, #ffffff 0 1px, transparent 1.4px) 10px 30px / 110px 110px,
+    radial-gradient(circle, #9dccff 0 1px, transparent 1.4px) 60px 80px / 170px 170px;
+}
+
+.stars-near {
+  filter: drop-shadow(0 0 6px rgba(150, 205, 255, 0.8));
+  animation: starDrift 42s linear infinite;
+}
+
+.stars-far {
+  opacity: 0.35;
+  transform: scale(1.3);
+  animation: starDriftReverse 95s linear infinite;
+}
+
+.nebula-field {
+  position: absolute;
+  left: 45%;
+  top: 5%;
+  width: 42vw;
+  height: 90vh;
+  transform: rotate(-18deg);
+  background: fixed linear-gradient(180deg, transparent 0%, rgba(242, 114, 210, 0.38) 24%, rgba(255, 209, 102, 0.28) 47%, rgba(113, 184, 255, 0.3) 72%, transparent 100%);
+  filter: blur(34px);
+  opacity: 0.65;
+  animation: nebulaFlow 16s ease-in-out infinite;
+}
+
+.solar-ribbon {
+  position: absolute;
+  width: 54vw;
+  height: 16vh;
+  border-radius: 999px;
+  filter: blur(28px);
+  opacity: 0.42;
+  transform: rotate(-24deg);
+}
+
+.ribbon-one {
+  left: 38%;
+  top: 28%;
+  background: linear-gradient(90deg, transparent, rgba(255, 112, 180, 0.8), rgba(255, 220, 140, 0.6), transparent);
+  animation: ribbonSlide 18s ease-in-out infinite;
+}
+
+.ribbon-two {
+  left: 20%;
+  top: 64%;
+  background: linear-gradient(90deg, transparent, rgba(56, 242, 208, 0.52), rgba(113, 184, 255, 0.64), transparent);
+  animation: ribbonSlide 22s ease-in-out reverse infinite;
+}
+
+.play-screen {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(320px, 430px) minmax(420px, 1fr);
+  grid-template-rows: 1fr auto;
+  gap: 22px;
+  width: min(1280px, 100%);
+  margin: 0 auto;
+  padding: 34px;
+}
+
+.play-panel {
+  align-self: center;
+  min-height: 560px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 46px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: fixed linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(4, 10, 18, 0.64);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.42);
+}
+
+.eyebrow {
+  margin: 0 0 12px;
+  color: var(--teal);
+  font-size: 0.76rem;
+  font-weight: 800;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+h1 {
+  margin: 0 0 18px;
+  font-size: clamp(4rem, 8vw, 7.8rem);
+  line-height: 0.88;
+  letter-spacing: 0;
+}
+
+.intro {
+  max-width: 36rem;
+  margin: 0;
+  color: var(--muted);
+  font-size: 1.05rem;
+  line-height: 1.7;
+}
+
+.play-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 34px;
+}
+
+.primary-button,
+.ghost-button {
+  min-height: 48px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  padding: 0 18px;
+  color: var(--text);
+  font-weight: 850;
+  text-decoration: none;
+}
+
+.primary-button {
+  background: linear-gradient(135deg, var(--teal), var(--blue));
+  color: #031018;
+  box-shadow: 0 14px 32px rgba(56, 242, 208, 0.2);
+}
+
+.ghost-button {
+  border: 1px solid var(--line);
+  background: rgba(255, 255, 255, 0.06);
+}
+
+.mini-status {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 28px;
+}
+
+.mini-status span {
+  border: 1px solid rgba(56, 242, 208, 0.22); 
+  border-radius: 999px;
+  padding: 8px 10px;
+  background: rgba(56, 242, 208, 0.08);
+  color: #d9fff7;
+  font-size: 0.78rem;
+  font-weight: 750;
+}
+
+.mission-stage {
+  position: relative;
+  align-self: center;
+  min-height: 560px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background:
+    radial-gradient(circle at 50% 55%, rgba(56, 242, 208, 0.14), transparent 14rem),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.025)),
+    rgba(4, 10, 18, 0.42);
+  backdrop-filter: blur(12px);
+  box-shadow: inset 0 0 80px rgba(113, 184, 255, 0.08);
+}
+
+.mission-stage::before {
+  content: "";
+  position: absolute;
+  inset: 18px;
+  border: 1px solid rgba(185, 226, 255, 0.12);
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+  background-size: 54px 54px;
+  mask-image: linear-gradient(180deg, transparent, black 18%, black 82%, transparent);
+}
+
+.glass-hud,
+.spacecraft-card {
+  position: absolute;
+  z-index: 3;
+  border: 1px solid rgba(185, 226, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(5, 12, 20, 0.58);
+  backdrop-filter: blur(14px);
+}
+
+.hud-top {
+  top: 28px;
+  left: 28px;
+  display: grid;
+  gap: 4px;
+  padding: 13px 15px;
+}
+
+.hud-top span,
+.spacecraft-card span {
+  color: var(--soft);
+  font-size: 0.74rem;
+  font-weight: 750;
+  text-transform: uppercase;
+}
+
+.hud-top strong {
+  color: var(--teal);
+}
+
+.spacecraft-card {
+  right: 28px;
+  bottom: 28px;
+  display: grid;
+  gap: 6px;
+  min-width: 230px;
+  padding: 16px;
+}
+
+.spacecraft-card strong {
+  font-size: 1.02rem;
+}
+
+.orbital-ring {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  border: 1px solid rgba(185, 226, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) rotate(-18deg);
+}
+
+.ring-one {
+  width: 440px;
+  height: 210px;
+  animation: ringSpin 18s linear infinite;
+}
+
+.ring-two {
+  width: 620px;
+  height: 310px;
+  opacity: 0.5;
+  animation: ringSpin 28s linear reverse infinite;
+}
+
+.mascot-float {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  z-index: 2;
+  width: min(330px, 42vw);
+  transform: translate(-50%, -50%);
+  filter: drop-shadow(0 26px 40px rgba(0, 0, 0, 0.4));
+  animation: mascotFloat 6s ease-in-out infinite;
+  pointer-events: none;
+  user-select: none;
+}
+
+.mission-picker {
+  grid-column: 1 / -1;
+  padding: 22px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(4, 10, 18, 0.58);
+  backdrop-filter: blur(18px);
+}
+
+.mission-picker input {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.mission-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: end;
+  margin-bottom: 16px;
+}
+
+.mission-heading h2 {
+  margin: 0;
+  font-size: 1.55rem;
+}
+
+.mission-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.mission-card {
+  min-height: 150px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  padding: 15px;
+  border: 1px solid rgba(185, 226, 255, 0.16);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.055);
+  cursor: pointer;
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+
+.mission-card:hover {
+  transform: translateY(-4px);
+  border-color: rgba(56, 242, 208, 0.55);
+  background: rgba(56, 242, 208, 0.08);
+}
+
+.mission-icon {
+  width: fit-content;
+  border: 1px solid rgba(56, 242, 208, 0.28);
+  border-radius: 999px;
+  padding: 6px 8px;
+  color: var(--teal);
+  font-size: 0.68rem;
+  font-weight: 900;
+}
+
+.mission-card strong {
+  font-size: 0.98rem;
+}
+
+.mission-card small {
+  color: var(--muted);
+  line-height: 1.45;
+}
+
+#mission-eva:checked~.mission-grid label[for="mission-eva"],
+#mission-iss:checked~.mission-grid label[for="mission-iss"],
+#mission-artemis:checked~.mission-grid label[for="mission-artemis"],
+#mission-mars:checked~.mission-grid label[for="mission-mars"],
+#mission-gps:checked~.mission-grid label[for="mission-gps"],
+#mission-cubesat:checked~.mission-grid label[for="mission-cubesat"] {
+  border-color: var(--teal);
+  background: linear-gradient(180deg, rgba(56, 242, 208, 0.18), rgba(56, 242, 208, 0.06));
+  box-shadow: 0 16px 34px rgba(56, 242, 208, 0.12);
+}
+
+@keyframes starDrift {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+
+  to {
+    transform: translate3d(-90px, 70px, 0);
+  }
+}
+
+@keyframes starDriftReverse {
+  from {
+    transform: translate3d(0, 0, 0) scale(1.3);
+  }
+
+  to {
+    transform: translate3d(80px, -60px, 0) scale(1.3);
+  }
+}
+
+@keyframes nebulaFlow {
+
+  0%,
+  100% {
+    transform: translateY(0) rotate(-18deg) scale(1);
+  }
+
+  50% {
+    transform: translateY(-28px) rotate(-14deg) scale(1.06);
+  }
+}
+
+@keyframes ribbonSlide {
+
+  0%,
+  100% {
+    transform: translateX(-4vw) rotate(-24deg);
+  }
+
+  50% {
+    transform: translateX(5vw) rotate(-18deg);
+  }
+}
+
+@keyframes ringSpin {
+  from {
+    transform: translate(-50%, -50%) rotate(-18deg);
+  }
+
+  to {
+    transform: translate(-50%, -50%) rotate(342deg);
+  }
+}
+
+@keyframes mascotFloat {
+
+  0%,
+  100% {
+    transform: translate(-50%, -50%) rotate(-6deg);
+  }
+
+  50% {
+    transform: translate(-50%, calc(-50% - 22px)) rotate(5deg);
+  }
+}
+
+@media (max-width: 1020px) {
+  .play-screen {
+    grid-template-columns: 1fr;
+  }
+
+  .play-panel,
+  .mission-stage {
+    min-height: 460px;
+  }
+
+  .mission-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 680px) {
+  .play-screen {
+    padding: 18px;
+  }
+
+  .play-panel {
+    min-height: 480px;
+    padding: 28px;
+  }
+
+  .mission-stage {
+    min-height: 420px;
+  }
+
+  .mission-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .mission-heading {
+    display: block;
+  }
+
+  .mascot-float {
+    width: 240px;
+  }
+
+  .spacecraft-card {
+    left: 18px;
+    right: 18px;
+    bottom: 18px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    scroll-behavior: auto !important;
+  }
+}
