@@ -1,4 +1,4 @@
-# Devlog 04
+# Devlog 03
 
 Added the first js interaction to Solarwake- the dropdown now changes the dashboard values & mission control recommendation based on the selected spacecraft scenario.
 
