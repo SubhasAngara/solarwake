@@ -22,9 +22,8 @@
   <main class="shell" id="app">
     <section class="home-view view is-active" aria-labelledby="home-title">
       <div class="home-panel">
-        <div class="brand-lockup">
-          <img class="brand-logo" src="./assets/solarwake-logo.png" alt="Solarwake" onload="this.nextElementSibling.hidden=true" onerror="this.hidden=true;this.nextElementSibling.hidden=false">
-          <h1 class="brand-word" id="home-title">Solarwake</h1>
+        <div class="solar-logo-crop" id="home-title" aria-label="Solarwake">
+          <img class="solar-logo-img" src="./assets/solarwake-logo.png" alt="Solarwake">
         </div>
 
         <nav class="home-actions" aria-label="Main menu">
@@ -113,6 +112,18 @@
   </main>
 
   <script type="module" src="./src/app.js"></script>
+  <div class="modal-layer" id="infoModal" hidden>
+    <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+      <p class="modal-kicker" id="modalKicker">Solarwake</p>
+      <h2 id="modalTitle">About</h2>
+      <p id="modalText">
+        Solarwake is a space-weather mission control simulator where you make decisions for astronauts, satellites, and
+        spacecraft while solar storms affect risk, communication, power, and mission safety.
+      </p>
+    </section>
+  </div>
+
 </body>
 
 </html>

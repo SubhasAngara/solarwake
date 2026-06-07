@@ -981,9 +981,6 @@ button {
   font-size: clamp(4rem, 9vw, 8.5rem);
   font-weight: 850;
   color: #ffffff;
-  text-shadow:
-    0 0 22px rgba(117, 201, 255, 0.24),
-    0 8px 40px rgba(0, 0, 0, 0.55);
 }
 
 .home-actions {
@@ -1016,7 +1013,231 @@ button {
   width: min(620px, 82vw);
   height: auto;
   display: block;
-  filter:
-    drop-shadow(0 0 24px rgba(117, 201, 255, 0.2))
-    drop-shadow(0 14px 38px rgba(0, 0, 0, 0.5));
+}
+
+html,
+body {
+  overflow: hidden;
+}
+
+.home-view {
+  min-height: 100svh;
+  padding: clamp(14px, 3vmin, 34px);
+  display: grid;
+  place-items: center;
+  text-align: center;
+}
+
+.home-panel {
+  width: min(980px, 92vw);
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+  backdrop-filter: none;
+  display: grid;
+  justify-items: center;
+  align-content: center;
+}
+
+.home-panel .eyebrow,
+.home-panel .intro {
+  display: none;
+}
+
+.solar-logo-crop {
+  width: min(1120px, 88vw);
+  height: clamp(128px, 20vmin, 250px);
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+}
+
+.solar-logo-img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.home-actions {
+  width: min(430px, 84vw);
+  margin-top: clamp(12px, 2vmin, 24px);
+  gap: 12px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.menu-button {
+  min-height: 48px;
+  padding: 0 22px;
+  text-align: center;
+  justify-content: center;
+  border-radius: 999px;
+  font-family: Helvetica, Arial, sans-serif;
+  font-weight: 700;
+  background: rgba(2, 8, 18, 0.48);
+}
+
+.menu-button.primary {
+  color: #031018;
+  background: linear-gradient(135deg, #70fff0, #75c9ff);
+}
+
+.glow-one {
+  left: calc(-1 * clamp(260px, 28vmin, 430px));
+  top: 50%;
+  bottom: auto;
+  width: clamp(620px, 82vmin, 1080px);
+  height: clamp(620px, 82vmin, 1080px);
+  transform: translateY(-50%) rotate(-9deg);
+}
+
+.glow-two {
+  left: auto;
+  right: clamp(13vw, 17vw, 22vw);
+  top: clamp(90px, 18vh, 190px);
+  width: clamp(54px, 7vmin, 105px);
+  height: clamp(54px, 7vmin, 105px);
+}
+
+.glow-three {
+  left: calc(-1 * clamp(180px, 18vmin, 320px));
+  top: 38%;
+  width: clamp(360px, 45vmin, 760px);
+  height: clamp(360px, 45vmin, 760px);
+}
+
+.mascot-drift {
+  left: clamp(18vw, 26vw, 34vw);
+  top: clamp(32vh, 39vh, 44vh);
+  width: clamp(150px, 13vmin, 245px);
+}
+
+@keyframes saturn-drift {
+  from {
+    transform: translateY(-50%) rotate(-9deg) translate3d(0, 0, 0) scale(1);
+  }
+
+  to {
+    transform: translateY(-50%) rotate(-8deg) translate3d(1.2vw, -0.8vh, 0) scale(1.01);
+  }
+}
+
+
+html,
+body,
+button {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.home-actions {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+}
+
+.menu-button {
+  font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 1rem;
+  font-weight: 800;
+  letter-spacing: 0;
+}
+
+.modal-layer {
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background: rgba(1, 4, 12, 0.58);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 180ms ease;
+  backdrop-filter: blur(10px);
+}
+
+.modal-layer.is-open {
+  opacity: 1;
+  pointer-events: auto;
+}
+
+.modal-card {
+  position: relative;
+  width: min(560px, 92vw);
+  padding: 34px;
+  color: #eef6ff;
+  background:
+    linear-gradient(145deg, rgba(7, 17, 34, 0.92), rgba(3, 8, 18, 0.86));
+  border: 1px solid rgba(238, 246, 255, 0.18);
+  border-radius: 22px;
+  box-shadow:
+    0 28px 90px rgba(0, 0, 0, 0.55),
+    0 0 42px rgba(112, 255, 240, 0.08);
+  transform: translateY(18px) scale(0.98);
+  transition: transform 180ms ease;
+}
+
+.modal-layer.is-open .modal-card {
+  transform: translateY(0) scale(1);
+}
+
+.modal-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(238, 246, 255, 0.18);
+  border-radius: 999px;
+  color: #eef6ff;
+  background: rgba(255, 255, 255, 0.08);
+  cursor: pointer;
+  font-size: 1.35rem;
+  font-weight: 400;
+  line-height: 1;
+}
+
+.modal-kicker {
+  margin: 0 0 10px;
+  color: #70fff0;
+  font-size: 0.78rem;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.modal-card h2 {
+  margin: 0;
+  font-size: clamp(1.8rem, 4vw, 2.7rem);
+  line-height: 1.05;
+}
+
+.modal-card p:last-child {
+  margin: 18px 0 0;
+  color: rgba(238, 246, 255, 0.78);
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.mission-view[hidden] {
+  display: none !important;
+}
+
+.mission-view {
+  position: fixed;
+  inset: 0;
+  z-index: 40;
+  min-height: 100svh;
+  padding: clamp(18px, 4vw, 54px);
+  overflow-y: auto;
+  display: grid;
+  place-items: center;
+}
+
+.mission-view.is-active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.mission-shell {
+  position: relative;
+  z-index: 45;
 }
