@@ -1241,3 +1241,501 @@ button {
   position: relative;
   z-index: 45;
 }
+
+html,
+body,
+button {
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.mission-shell,
+.viewer-panel,
+.mission-card,
+.back-button {
+  color: #eef6ff;
+}
+
+.mission-shell {
+  background: rgba(2, 8, 18, 0.78);
+  border: 1px solid rgba(238, 246, 255, 0.16);
+}
+
+.mission-topbar h2,
+.viewer-copy h3 {
+  color: #f4f8ff;
+  font-weight: 800;
+}
+
+.viewer-copy p:last-child,
+.mission-card small {
+  color: rgba(238, 246, 255, 0.72);
+}
+
+.eyebrow,
+.viewer-copy .eyebrow {
+  color: #70fff0;
+}
+
+.back-button,
+.mission-card {
+  background: rgba(8, 18, 32, 0.74);
+  border-color: rgba(238, 246, 255, 0.16);
+}
+
+.mission-card strong {
+  color: #ffffff;
+  font-weight: 800;
+}
+
+.mission-card[data-mission="eva"] {
+  --mission-color: #70fff0;
+  --mission-glow: rgba(112, 255, 240, 0.22);
+}
+
+.mission-card[data-mission="iss"] {
+  --mission-color: #75c9ff;
+  --mission-glow: rgba(117, 201, 255, 0.22);
+}
+
+.mission-card[data-mission="artemis"] {
+  --mission-color: #cfd5dc;
+  --mission-glow: rgba(207, 213, 220, 0.2);
+}
+
+.mission-card[data-mission="mars"] {
+  --mission-color: #ff7b5f;
+  --mission-glow: rgba(255, 123, 95, 0.24);
+}
+
+.mission-card[data-mission="gps"] {
+  --mission-color: #8fb7ff;
+  --mission-glow: rgba(143, 183, 255, 0.22);
+}
+
+.mission-card[data-mission="cubesat"] {
+  --mission-color: #ffd166;
+  --mission-glow: rgba(255, 209, 102, 0.22);
+}
+
+.mission-card span {
+  color: var(--mission-color);
+  border-color: color-mix(in srgb, var(--mission-color) 55%, transparent);
+  background: color-mix(in srgb, var(--mission-color) 12%, transparent);
+}
+
+.mission-card.is-selected {
+  border-color: var(--mission-color);
+  background:
+    radial-gradient(circle at 12% 20%, var(--mission-glow), transparent 45%),
+    rgba(10, 24, 38, 0.86);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--mission-color) 20%, transparent),
+    0 18px 40px rgba(0, 0, 0, 0.28);
+}
+
+.viewer-frame {
+  min-height: 420px;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(112, 255, 240, 0.08), transparent 28%),
+    radial-gradient(circle at 50% 70%, rgba(117, 201, 255, 0.08), transparent 36%);
+}
+
+.mission-model {
+  width: 230px;
+  height: 230px;
+}
+
+.model-part {
+  box-shadow:
+    0 20px 48px rgba(0, 0, 0, 0.34),
+    inset 8px 8px 18px rgba(255, 255, 255, 0.18),
+    inset -14px -14px 22px rgba(0, 0, 0, 0.26);
+}
+
+.model-eva .part-main {
+  width: 78px;
+  height: 92px;
+  border-radius: 34px 34px 24px 24px;
+  background: linear-gradient(145deg, #f5fbff, #a9bfd0);
+  transform: translate3d(-50%, -32%, 42px);
+}
+
+.model-eva .part-main::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: radial-gradient(circle, #70fff0, #267e8a);
+  transform: translate(-50%, -50%);
+  box-shadow: 0 0 18px rgba(112, 255, 240, 0.6);
+}
+
+.model-eva .part-top {
+  width: 84px;
+  height: 84px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 42% 38%, rgba(255, 196, 102, 0.9), rgba(200, 103, 48, 0.9) 26%, transparent 27%),
+    radial-gradient(circle at 50% 54%, rgba(12, 18, 34, 0.9), rgba(12, 18, 34, 0.96) 48%, transparent 49%),
+    linear-gradient(145deg, #f9fcff, #9fb4c7);
+  transform: translate3d(-50%, -122px, 60px);
+}
+
+.model-eva .part-left,
+.model-eva .part-right {
+  width: 72px;
+  height: 20px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #f8fbff, #a8bdce);
+}
+
+.model-eva .part-left {
+  transform: translate3d(-118px, -50%, 18px) rotateZ(-18deg);
+}
+
+.model-eva .part-right {
+  transform: translate3d(46px, -50%, 18px) rotateZ(18deg);
+}
+
+.model-eva .part-bottom {
+  width: 86px;
+  height: 24px;
+  border-radius: 999px;
+  background: linear-gradient(145deg, #dfe9f2, #75899c);
+  transform: translate3d(-50%, 74px, 18px);
+}
+
+.model-iss .part-main {
+  width: 120px;
+  height: 24px;
+  border-radius: 8px;
+  background: linear-gradient(90deg, #dce8f5, #7d92a7, #eff6ff);
+  transform: translate3d(-50%, -50%, 40px);
+}
+
+.model-iss .part-top,
+.model-iss .part-bottom {
+  width: 34px;
+  height: 96px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #8fa5ba);
+}
+
+.model-iss .part-top {
+  transform: translate3d(-50%, -126px, 28px);
+}
+
+.model-iss .part-bottom {
+  transform: translate3d(-50%, 34px, 28px);
+}
+
+.model-iss .part-left,
+.model-iss .part-right {
+  width: 142px;
+  height: 68px;
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.28) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.2) 1px, transparent 1px),
+    linear-gradient(145deg, #15376a, #75c9ff);
+  background-size: 24px 100%, 100% 18px, auto;
+}
+
+.model-iss .part-left {
+  transform: translate3d(-210px, -50%, 0) rotateY(-16deg);
+}
+
+.model-iss .part-right {
+  transform: translate3d(68px, -50%, 0) rotateY(16deg);
+}
+
+.model-artemis .part-main {
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 28% 28%, #f0f0ed, #9b9fa5 38%, #4d535d 70%, #171b22 100%);
+  transform: translate3d(-50%, -50%, 22px);
+}
+
+.model-artemis .part-main::before,
+.model-artemis .part-main::after {
+  content: "";
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(46, 50, 58, 0.34);
+}
+
+.model-artemis .part-main::before {
+  width: 22px;
+  height: 22px;
+  left: 30px;
+  top: 42px;
+}
+
+.model-artemis .part-main::after {
+  width: 14px;
+  height: 14px;
+  right: 34px;
+  bottom: 36px;
+}
+
+.model-artemis .part-top {
+  width: 64px;
+  height: 78px;
+  border-radius: 50% 50% 18px 18px;
+  background: linear-gradient(145deg, #ffffff, #b7c4ce);
+  transform: translate3d(-50%, -142px, 42px);
+}
+
+.model-artemis .part-left,
+.model-artemis .part-right,
+.model-artemis .part-bottom {
+  display: none;
+}
+
+.model-mars .part-main {
+  width: 138px;
+  height: 138px;
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 32% 26%, #ffb18a, #c65a3c 34%, #6f241c 70%, #240b0a 100%);
+  transform: translate3d(-50%, -50%, 24px);
+}
+
+.model-mars .part-main::before {
+  content: "";
+  position: absolute;
+  inset: 24px 12px auto 8px;
+  height: 18px;
+  border-radius: 50%;
+  background: rgba(255, 204, 140, 0.22);
+  transform: rotate(-14deg);
+}
+
+.model-mars .part-top {
+  width: 78px;
+  height: 34px;
+  border-radius: 50%;
+  background: rgba(255, 180, 125, 0.24);
+  transform: translate3d(-70%, -118px, 22px) rotateZ(-18deg);
+}
+
+.model-mars .part-left,
+.model-mars .part-right,
+.model-mars .part-bottom {
+  display: none;
+}
+
+.model-gps .part-main {
+  width: 72px;
+  height: 72px;
+  border-radius: 14px;
+  background: linear-gradient(145deg, #e8f2ff, #738aa5);
+  transform: translate3d(-50%, -50%, 44px);
+}
+
+.model-gps .part-left,
+.model-gps .part-right {
+  width: 148px;
+  height: 58px;
+  border-radius: 4px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(145deg, #122b68, #8fb7ff);
+  background-size: 24px 100%, 100% 18px, auto;
+}
+
+.model-gps .part-left {
+  transform: translate3d(-206px, -50%, 0) rotateY(-18deg);
+}
+
+.model-gps .part-right {
+  transform: translate3d(62px, -50%, 0) rotateY(18deg);
+}
+
+.model-gps .part-top {
+  width: 28px;
+  height: 92px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #8fa5ba);
+  transform: translate3d(-50%, -132px, 20px);
+}
+
+.model-gps .part-bottom {
+  width: 28px;
+  height: 92px;
+  border-radius: 999px;
+  background: linear-gradient(180deg, #ffffff, #8fa5ba);
+  transform: translate3d(-50%, 40px, 20px);
+}
+
+.model-cubesat .part-main {
+  width: 96px;
+  height: 96px;
+  border-radius: 16px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+    linear-gradient(0deg, rgba(255, 255, 255, 0.18) 1px, transparent 1px),
+    linear-gradient(145deg, #ffd166, #6b4a12);
+  background-size: 24px 24px, 24px 24px, auto;
+  transform: translate3d(-50%, -50%, 42px) rotateZ(6deg);
+}
+
+.model-cubesat .part-left,
+.model-cubesat .part-right {
+  width: 90px;
+  height: 54px;
+  border-radius: 5px;
+  background:
+    linear-gradient(90deg, rgba(255, 255, 255, 0.24) 1px, transparent 1px),
+    linear-gradient(145deg, #183a64, #70fff0);
+  background-size: 22px 100%, auto;
+}
+
+.model-cubesat .part-left {
+  transform: translate3d(-158px, -50%, 2px) rotateY(-22deg);
+}
+
+.model-cubesat .part-right {
+  transform: translate3d(68px, -50%, 2px) rotateY(22deg);
+}
+
+.model-cubesat .part-top,
+.model-cubesat .part-bottom {
+  width: 26px;
+  height: 26px;
+  border-radius: 50%;
+  background: #eef6ff;
+}
+
+.model-cubesat .part-top {
+  transform: translate3d(-50%, -112px, 20px);
+}
+
+.model-cubesat .part-bottom {
+  transform: translate3d(-50%, 86px, 20px);
+}
+
+
+html,
+body,
+button {
+  font-family: "Segoe UI", "Helvetica Neue", Helvetica, Arial, sans-serif;
+}
+
+.mission-view {
+  color: #eef6ff;
+}
+
+.mission-shell {
+  background: rgba(2, 8, 18, 0.82);
+  border: 1px solid rgba(238, 246, 255, 0.16);
+}
+
+.mission-topbar h2,
+.viewer-copy h3,
+.mission-card strong {
+  color: #f7fbff;
+  font-weight: 850;
+}
+
+.viewer-copy p:last-child,
+.mission-card small {
+  color: rgba(238, 246, 255, 0.72);
+}
+
+.back-button,
+.mission-card {
+  color: #eef6ff;
+  background: rgba(8, 18, 32, 0.76);
+  border-color: rgba(238, 246, 255, 0.16);
+}
+
+.mission-card span {
+  font-weight: 850;
+}
+
+.mission-card[data-mission="eva"] {
+  --mission-color: #70fff0;
+  --mission-glow: rgba(112, 255, 240, 0.18);
+}
+
+.mission-card[data-mission="iss"] {
+  --mission-color: #75c9ff;
+  --mission-glow: rgba(117, 201, 255, 0.18);
+}
+
+.mission-card[data-mission="artemis"] {
+  --mission-color: #cfd5dc;
+  --mission-glow: rgba(207, 213, 220, 0.18);
+}
+
+.mission-card[data-mission="mars"] {
+  --mission-color: #ff765f;
+  --mission-glow: rgba(255, 118, 95, 0.2);
+}
+
+.mission-card[data-mission="gps"] {
+  --mission-color: #8fb7ff;
+  --mission-glow: rgba(143, 183, 255, 0.18);
+}
+
+.mission-card[data-mission="cubesat"] {
+  --mission-color: #ffd166;
+  --mission-glow: rgba(255, 209, 102, 0.18);
+}
+
+.mission-card span {
+  color: var(--mission-color);
+  border-color: var(--mission-color);
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.mission-card.is-selected {
+  border-color: var(--mission-color);
+  background:
+    radial-gradient(circle at 12% 20%, var(--mission-glow), transparent 46%),
+    rgba(10, 24, 38, 0.9);
+}
+
+.viewer-panel {
+  background:
+    linear-gradient(140deg, rgba(238, 246, 255, 0.08), rgba(4, 10, 22, 0.72));
+}
+
+.viewer-frame {
+  position: relative;
+  min-height: 500px;
+  overflow: hidden;
+  cursor: grab;
+  background:
+    radial-gradient(circle at 50% 48%, rgba(112, 255, 240, 0.08), transparent 26%),
+    radial-gradient(circle at 50% 70%, rgba(117, 201, 255, 0.08), transparent 38%);
+}
+
+.viewer-frame:active {
+  cursor: grabbing;
+}
+
+.mission-canvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.orbit,
+.mission-model {
+  display: none !important;
+}
+
+.drag-hint {
+  z-index: 5;
+  color: rgba(238, 246, 255, 0.68);
+}
