@@ -31,8 +31,6 @@
           <button class="menu-button" type="button" id="tutorialButton">Tutorial</button>
           <button class="menu-button" type="button" id="aboutButton">About</button>
         </nav>
-
-        <p class="info-note" id="infoNote" hidden></p>
       </div>
     </section>
 
@@ -90,6 +88,9 @@
               <p class="eyebrow">Interactive preview</p>
               <h3 id="viewerTitle">Astronaut EVA</h3>
               <p id="viewerText">Drag the visual to inspect the mission from different angles.</p>
+              <div class="viewer-actions">
+                <button class="mission-launch-button" type="button" id="launchButton">Launch mission</button>
+              </div>
             </div>
 
             <div class="viewer-frame" id="viewerFrame">
@@ -109,12 +110,243 @@
         </div>
       </div>
     </section>
+
+    <section class="game-view view" id="gameView" aria-labelledby="game-title" hidden>
+      <div class="theater-shell">
+        <header class="theater-topbar">
+          <button class="back-button theater-back" type="button" id="gameBackButton">Missions</button>
+
+          <div class="theater-title-block">
+            <p class="eyebrow">Solarwake // Mission Control</p>
+            <h2 id="game-title"><span id="gameMissionName">Astronaut EVA</span></h2>
+          </div>
+
+          <div class="storm-banner">
+            <span>Live status</span>
+            <strong id="gameStormLevel">Solar storm G3</strong>
+          </div>
+
+          <div class="resource-stack">
+            <div class="resource-meter">
+              <span>Energy</span>
+              <div><i id="gameEnergyFill"></i></div>
+              <strong id="gameEnergyValue">72%</strong>
+            </div>
+            <div class="resource-meter">
+              <span>Signal</span>
+              <div><i id="gameSignalFill"></i></div>
+              <strong id="gameSignalValue">64%</strong>
+            </div>
+          </div>
+        </header>
+
+        <div class="theater-grid">
+          <aside class="telemetry-rail left-rail">
+            <section class="theater-panel solar-monitor-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Solar monitoring array</p>
+                <h3>Sun</h3>
+              </div>
+
+              <div class="sun-monitor">
+                <div class="mini-sun"></div>
+                <div class="mini-flare"></div>
+              </div>
+
+              <div class="readout-grid">
+                <div>
+                  <span>CME status</span>
+                  <strong>Alert/active</strong>
+                </div>
+                <div>
+                  <span>Flare class</span>
+                  <strong id="gameFlareClass">X3.2</strong>
+                </div>
+              </div>
+            </section>
+
+            <section class="theater-panel alert-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Alert feed</p>
+                <h3>Space weather</h3>
+              </div>
+
+              <ul class="alert-feed" id="alertFeed">
+                <li>CME impact window updating.</li>
+                <li>Particle monitor trending upward.</li>
+                <li>Flight director action required.</li>
+              </ul>
+            </section>
+
+            <section class="theater-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Orbital status</p>
+                <h3>Network</h3>
+              </div>
+
+              <div class="orbital-readouts">
+                <div><span>LEO assets</span><strong>142/145 online</strong></div>
+                <div><span>Deep-space links</span><strong>12/14 stable</strong></div>
+              </div>
+            </section>
+          </aside>
+
+          <section class="theater-main" aria-label="Live mission theater">
+            <div class="theater-screen-header">
+              <div>
+                <p class="eyebrow">Sun-Earth space weather theater</p>
+                <h3 id="theaterModeLabel">3D tactical map</h3>
+              </div>
+
+              <div class="orbit-tabs" aria-hidden="true">
+                <span class="is-active">LEO</span>
+                <span>MEO</span>
+                <span>GEO</span>
+              </div>
+            </div>
+
+            <div class="game-theater-frame">
+              <canvas class="game-canvas" id="gameCanvas"></canvas>
+
+              <div class="theater-overlay theater-overlay-left">
+                <span>Solar wind</span>
+                <strong id="theaterCaption">Live particle front approaching mission asset.</strong>
+              </div>
+
+              <div class="theater-legend">
+                <span><i class="legend-green"></i> Stable</span>
+                <span><i class="legend-yellow"></i> Caution</span>
+                <span><i class="legend-red"></i> Critical</span>
+              </div>
+            </div>
+          </section>
+
+          <aside class="telemetry-rail right-rail">
+            <section class="theater-panel asset-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Asset management</p>
+                <h3 id="gameAssetName">Aurora-7</h3>
+              </div>
+
+              <p id="gameAssetType">Mission asset status updating.</p>
+
+              <div class="asset-health-grid">
+                <div>
+                  <span>Health</span>
+                  <strong id="gameHealthValue">82%</strong>
+                </div>
+                <div>
+                  <span>Shield</span>
+                  <strong id="gameShieldValue">54%</strong>
+                </div>
+                <div>
+                  <span>Power</span>
+                  <strong id="gamePowerValue">72%</strong>
+                </div>
+              </div>
+
+              <div class="risk-list theater-risk-list">
+                <div class="risk-row" data-risk="radiation">
+                  <div><span>Radiation</span><strong>68%</strong></div>
+                  <div class="risk-track"><i></i></div>
+                </div>
+                <div class="risk-row" data-risk="comms">
+                  <div><span>Comms</span><strong>44%</strong></div>
+                  <div class="risk-track"><i></i></div>
+                </div>
+                <div class="risk-row" data-risk="power">
+                  <div><span>Power</span><strong>31%</strong></div>
+                  <div class="risk-track"><i></i></div>
+                </div>
+                <div class="risk-row" data-risk="crew">
+                  <div><span>Safety</span><strong>59%</strong></div>
+                  <div class="risk-track"><i></i></div>
+                </div>
+              </div>
+            </section>
+
+            <section class="theater-panel action-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Actions</p>
+                <h3>Command options</h3>
+              </div>
+
+              <div class="action-stack">
+                <button class="decision-card command-button" type="button" data-choice="safe">Safe posture</button>
+                <button class="decision-card command-button" type="button" data-choice="comms">Reroute comms</button>
+                <button class="decision-card command-button" type="button" data-choice="shield">Shield systems</button>
+                <button class="decision-card command-button" type="button" data-choice="hold">Hold timeline</button>
+              </div>
+            </section>
+
+            <section class="theater-panel fleet-panel">
+              <div class="panel-heading">
+                <p class="eyebrow">Fleet overview</p>
+                <h3>Nearby assets</h3>
+              </div>
+
+              <div class="fleet-list">
+                <div><span>SAT-78</span><strong>Nominal</strong></div>
+                <div><span>Relay-4</span><strong>Caution</strong></div>
+              </div>
+            </section>
+          </aside>
+        </div>
+
+        <footer class="command-deck">
+          <section class="theater-panel forecast-panel">
+            <div class="panel-heading">
+              <p class="eyebrow">Solar wind forecast</p>
+              <h3>Kp index: 8.9</h3>
+            </div>
+
+            <div class="forecast-chart" aria-hidden="true">
+              <i style="height: 18%"></i>
+              <i style="height: 22%"></i>
+              <i style="height: 34%"></i>
+              <i style="height: 48%"></i>
+              <i style="height: 72%"></i>
+              <i style="height: 84%"></i>
+              <i style="height: 68%"></i>
+              <i style="height: 58%"></i>
+              <i style="height: 46%"></i>
+              <i style="height: 39%"></i>
+            </div>
+          </section>
+
+          <section class="theater-panel command-terminal">
+            <div class="panel-heading">
+              <p class="eyebrow">Command terminal</p>
+              <h3 id="gameScenario">Storm response required</h3>
+            </div>
+
+            <p id="gameMissionStatus">Mission systems are online. Solar conditions are changing faster than forecast.</p>
+            <p id="gameEventText">A solar weather event is affecting mission systems.</p>
+            <p class="terminal-line" id="commandLine">&gt; Awaiting flight director input.</p>
+          </section>
+
+          <section class="theater-panel log-panel">
+            <div class="panel-heading">
+              <p class="eyebrow">Mission feed</p>
+              <h3>Flight log</h3>
+            </div>
+
+            <ul class="flight-log">
+              <li id="latestLog">Awaiting flight director decision.</li>
+              <li>Solar particle monitor trending upward.</li>
+              <li>Guidance, navigation, and control standing by.</li>
+            </ul>
+          </section>
+        </footer>
+      </div>
+    </section>
   </main>
 
   <script type="module" src="./src/app.js"></script>
+
   <div class="modal-layer" id="infoModal" hidden>
     <section class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
-      <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close">x</button>
       <p class="modal-kicker" id="modalKicker">Solarwake</p>
       <h2 id="modalTitle">About</h2>
       <p id="modalText">
@@ -123,7 +355,6 @@
       </p>
     </section>
   </div>
-
 </body>
 
 </html>
